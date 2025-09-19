@@ -29,4 +29,5 @@ services:
       retries: 3
     restart: unless-stopped
     volumes:
-      - /var/lib/docker/volumes/radicale:/data
+      - /var/lib/docker/volumes/radicale/data:/data
+      - /var/lib/docker/volumes/radicale/config:/config
