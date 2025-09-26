@@ -29,4 +29,7 @@ services:
       - ROUNDCUBEMAIL_DB_PASSWORD=roundcube-mysql-pw
       - ROUNDCUBEMAIL_SKIN=elastic
       - ROUNDCUBEMAIL_DEFAULT_HOST=tls://mail.infomaniak.com
-      - ROUNDCUBEMAIL_SMTP_SERVER=tls:/ssl0.ovh.net
+      - ROUNDCUBEMAIL_SMTP_SERVER=tls:/ssl0.ovh.net:587
+      - ROUNDCUBEMAIL_SMTP_USER=smtpmx@morinsfamily.com
+      - ROUNDCUBEMAIL_SMTP_PASS=9QW3j8Fry2z7KPt
+      
