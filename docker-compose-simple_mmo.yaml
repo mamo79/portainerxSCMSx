@@ -6,12 +6,11 @@ services:
     container_name: roundcubemail
 #    restart: unless-stopped
     volumes:
-      - ./www:/var/www/html
-      - ./db/sqlite:/var/roundcube/db
+      - /var/lib/docker/volumes/roundcube/www:/var/www/html
+      - /var/lib/docker/volumes/roundcube/db:/var/roundcube/db
+      - /var/lib/docker/volumes/roundcube/config:/var/www/config
     ports:
       - 9002:80
     environment:
       - ROUNDCUBEMAIL_DB_TYPE=sqlite
       - ROUNDCUBEMAIL_SKIN=elastic
-      - ROUNDCUBEMAIL_DEFAULT_HOST=tls://mail.example.org
-      - ROUNDCUBEMAIL_SMTP_SERVER=tls://mail.example.org
