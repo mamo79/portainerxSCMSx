@@ -1,29 +1,36 @@
-version: '3.8'
+version: '3.2'
 
 services:
   db:
-    image: mariadb:10.6
+    image: postgres
     restart: always
-    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
-    environment:
-    MYSQL_ROOT_PASSWORD: root_password
-    MYSQL_DATABASE: nextcloud
-    MYSQL_USER: nextcloud_user
-    MYSQL_PASSWORD: nextcloud_password
     volumes:
-    - /var/lib/docker/volumes/nextcloud/db:/var/lib/mysql
+      - /var/lib/docker/volumes/nextcloud/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=nextcloud
 
   app:
     image: nextcloud
     restart: always
     ports:
-    - 8080:80
-    environment:
-    MYSQL_HOST: db
-    MYSQL_DATABASE: nextcloud
-    MYSQL_USER: nextcloud_user
-    MYSQL_PASSWORD: nextcloud_password
-    depends_on:
-    - db
+      - 9003:80
     volumes:
-    - /var/lib/docker/volumes/nextcloud/nextcloud:/var/www/html
+      - /var/lib/docker/volumes/nextcloud/nextcloud:/var/www/html
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=nextcloud
+    depends_on:
+      - db
+
+  cron:
+    image: nextcloud
+    restart: always
+    volumes:
+      - /var/lib/docker/volumes/nextcloud/nextcloud:/var/www/html
+    entrypoint: /cron.sh
+    depends_on:
+      - db
