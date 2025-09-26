@@ -28,5 +28,5 @@ services:
       - ROUNDCUBEMAIL_DB_HOST=roundcubedb
       - ROUNDCUBEMAIL_DB_PASSWORD=roundcube-mysql-pw
       - ROUNDCUBEMAIL_SKIN=elastic
-      - ROUNDCUBEMAIL_DEFAULT_HOST=tls://mail.example.org
-      - ROUNDCUBEMAIL_SMTP_SERVER=tls://mail.example.org
+      - ROUNDCUBEMAIL_DEFAULT_HOST=tls://mail.infomaniak.com
+      - ROUNDCUBEMAIL_SMTP_SERVER=tls:/ssl0.ovh.net
