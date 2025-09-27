@@ -28,5 +28,8 @@ services:
       - MYSQL_HOST=db
 
 volumes:
-  nextcloud:/var/lib/docker/volumes/nextcloud/nextcloud
-  db:/var/lib/docker/volumes/nextcloud/db
+  nextcloud:
+    - /var/lib/docker/volumes/nextcloud/nextcloud
+  db:
+    - /var/lib/docker/volumes/nextcloud/db
+
