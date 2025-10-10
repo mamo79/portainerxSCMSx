@@ -16,7 +16,7 @@ services:
       - 3501:3001
     shm_size: "1gb"
     restart: unless-stopped
-services:
+
   ferdium-server:
     image: ferdium/ferdium-server:latest
     container_name: ferdium-server
