@@ -22,7 +22,7 @@ services:
     container_name: ferdium-server
     environment:
       - NODE_ENV=production
-      - APP_URL=https://ferdium.xscmsx.fr
+      - APP_URL=https://ferdiumserver.xscmsx.fr.
       - DB_CONNECTION=sqlite
       - DATA_DIR=/data
       - IS_CREATION_ENABLED=true
